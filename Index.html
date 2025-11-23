@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Одинокие сердца некста - Выпуск 1</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,700;0,900;1,400&family=Roboto:wght@300;400;500;700&display=swap');
+
+        :root {
+            --primary: #e63946;
+            --secondary: #1d3557;
+            --accent: #f1faee;
+            --text: #333;
+            --paper: #fdfbf7;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f2f5;
+            color: var(--text);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* Container imitating a paper magazine */
+        .magazine-container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: var(--paper);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            overflow: hidden;
+            border-radius: 4px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--text);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 5px solid var(--primary);
+            position: relative;
+        }
+
+        .issue-meta {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.8;
+            margin-bottom: 5px;
+        }
+
+        h1.logo {
+            font-family: 'Merriweather', serif;
+            font-size: 2.5rem;
+            margin: 0;
+            text-transform: uppercase;
+            line-height: 1.1;
+            letter-spacing: -1px;
+        }
+
+        h1.logo span {
+            color: var(--primary);
+            font-style: italic;
+        }
+
+        .slogan {
+            font-style: italic;
+            font-size: 0.9rem;
+            margin-top: 5px;
+            color: #ccc;
+        }
+
+        /* Layout Grid */
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        /* Articles */
+        article {
+            background: white;
+            border: 1px solid #eee;
+            margin-bottom: 10px;
+            transition: transform 0.2s;
+        }
+
+        article:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .article-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 3px solid var(--primary);
+        }
+
+        .hero-article .article-img {
+            height: 300px;
+        }
+
+        .article-content {
+            padding: 15px;
+        }
+
+        .tag {
+            background-color: var(--secondary);
+            color: white;
+            padding: 3px 8px;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .tag.scandal { background-color: var(--primary); }
+        .tag.money { background-color: #2a9d8f; }
+        .tag.love { background-color: #e76f51; }
+        .tag.alert { background-color: #000; }
+
+        h2 {
+            font-family: 'Merriweather', serif;
+            font-size: 1.4rem;
+            margin: 0 0 10px 0;
+            line-height: 1.3;
+        }
+
+        p {
+            font-size: 0.95rem;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .quote {
+            border-left: 3px solid var(--primary);
+            padding-left: 10px;
+            font-style: italic;
+            color: #777;
+            font-size: 0.9rem;
+            margin: 10px 0;
+        }
+
+        /* Specific styles for layout variations */
+        .hero {
+            grid-column: 1 / -1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        @media (min-width: 600px) {
+            .hero {
+                flex-direction: row;
+                align-items: stretch;
+            }
+            .hero .article-img {
+                width: 60%;
+                height: auto;
+                border-bottom: none;
+                border-right: 3px solid var(--primary);
+            }
+            .hero .article-content {
+                width: 40%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+            .logo { font-size: 3.5rem; }
+        }
+
+        .ticker-wrap {
+            width: 100%;
+            overflow: hidden;
+            background-color: #000;
+            color: #fff;
+            padding: 8px 0;
+            white-space: nowrap;
+        }
+
+        .ticker {
+            display: inline-block;
+            animation: marquee 20s linear infinite;
+            padding-left: 100%;
+        }
+
+        @keyframes marquee {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-100%, 0); }
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 20px;
+            font-size: 0.8rem;
+        }
+
+        .reaction-emoji {
+            font-size: 1.2rem;
+            margin-top: 5px;
+            display: block;
+            text-align: right;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="magazine-container">
+        <!-- Header -->
+        <header>
+            <div class="issue-meta">Спецвыпуск №1 • Чат The Next • Только правда (почти)</div>
+            <h1 class="logo">Одинокие <span>Сердца</span> Некста</h1>
+            <div class="slogan">Мы пишем то, о чем шепчутся в личке.</div>
+        </header>
+
+        <!-- Breaking News Ticker -->
+        <div class="ticker-wrap">
+            <div class="ticker">
+                🔥 СРОЧНО: Пабло остался без мороженого! 🔥 Светка скупает акции фабрики трусов! 🔥 Кто следующий в гареме Соула?
+            </div>
+        </div>
+
+        <div class="content-grid">
+
+            <!-- Story 1: Keksik (Hero) -->
+            <article class="hero hero-article">
+                <img src="https://i.imgur.com/23jCy4O.jpeg" alt="Кексик" class="article-img">
+                <div class="article-content">
+                    <span class="tag scandal">Громкое возвращение</span>
+                    <h2>Кексик: Спецоперация «Камбэк»</h2>
+                    <p>Чат замер в ожидании. Она ушла, чтобы вернуться? Или вернулась, чтобы уйти? Кексик снова с нами, но вопросы остаются.</p>
+                    <p>Инсайдеры сообщают, что админы судорожно обновляют правила. Почему верхушка была против её возвращения? Боятся конкуренции или знают страшную тайну?</p>
+                    <div class="quote">«Я просто зашла проверить, как тут мои подданные...» — (не)официальный комментарий.</div>
+                </div>
+            </article>
+
+            <!-- Story 2: Soul -->
+            <article>
+                <img src="https://i.imgur.com/nl1MKdA.jpeg" alt="Соул" class="article-img">
+                <div class="article-content">
+                    <span class="tag love">Любовный фронт</span>
+                    <h2>Гарем Соула: Развод №148</h2>
+                    <p>Соул меняет жен быстрее, чем меняются аватарки в чате. Очередной развод потряс общественность.</p>
+                    <p><strong>Аналитика:</strong> Пора узаконить многоженство в рамках «The Next». Эксперты считают, что это единственный способ спасти демографию чата.</p>
+                </div>
+            </article>
+
+            <!-- Story 3: Rozovaya -->
+            <article>
+                <img src="https://i.imgur.com/LqQaxXA.jpeg" alt="Розовая" class="article-img">
+                <div class="article-content">
+                    <span class="tag money">Forbes Next</span>
+                    <h2>Империя Розовой (Светки)</h2>
+                    <p>Состояние: <strong>35 000 ирисок</strong>. Активы: 2 верных помощника и 1 муж (в комплекте).</p>
+                    <p>Светка открывает завод по производству элитных трусов. Ксюша пока не дала официальных комментариев, но очевидцы видели, как она нервно пила чай. Зависть или шок?</p>
+                </div>
+            </article>
+
+            <!-- Story 4: Kika & Anima -->
+            <article>
+                <img src="https://i.imgur.com/ovUHLWU.jpeg" alt="Кика и Анима" class="article-img">
+                <div class="article-content">
+                    <span class="tag scandal">Криминал</span>
+                    <h2>Ограбление века: Пабло и Мороженое</h2>
+                    <p>Вчера ночью Кика и Анима совершили дерзкий налет. Жертвой стал Пабло, лишившийся последнего мороженого.</p>
+                    <p>Было ли это актом голода или девочки просто решили порадовать мальчика своим вниманием? Пабло молчит и плачет.</p>
+                    <span class="reaction-emoji">🍦🏃‍♀️🏃‍♀️</span>
+                </div>
+            </article>
+
+            <!-- Story 5: Sova -->
+            <article>
+                <img src="https://i.imgur.com/0WDhPrj.jpeg" alt="Сова" class="article-img">
+                <div class="article-content">
+                    <span class="tag love">Семейные драмы</span>
+                    <h2>Сова и День Рождения</h2>
+                    <p>Активная подготовка ко Дню Рождения мужа. Источники, близкие к семье, утверждают: мужа она любит больше, чем сына.</p>
+                    <p>Шокирующее признание или просто женская мудрость? Читайте в следующем выпуске.</p>
+                </div>
+            </article>
+
+            <!-- Story 6: Oksana -->
+            <article>
+                <img src="https://i.imgur.com/F9cZooY.jpeg" alt="Оксана" class="article-img">
+                <div class="article-content">
+                    <span class="tag scandal">Культурный шок</span>
+                    <h2>Тайна Белорусского Завтрака</h2>
+                    <p>Оксана узнала, что такое настоящий белорусский завтрак. Свидетели описывают её состояние как "глубокое потрясение".</p>
+                    <p>Картошка? Драники? Или что-то покрепче? Мы проводим расследование.</p>
+                </div>
+            </article>
+
+            <!-- Story 7: Catharsis -->
+            <article style="grid-column: 1 / -1; background-color: #fff0f0; border-color: red;">
+                <div style="display: flex; align-items: center; padding: 10px;">
+                    <img src="https://i.imgur.com/7zkOMNG.jpeg" alt="Катарсис" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-right: 20px;">
+                    <div>
+                        <span class="tag alert">ВНИМАНИЕ РОЗЫСК</span>
+                        <h2 style="color: #d00000;">Пропала Катарсис!</h2>
+                        <p style="margin: 0;">Грустная новость недели. Поисковая группа уже прочесывает личные сообщения и соседние чаты. Если вы видели её — сообщите админам!</p>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+
+        <footer>
+            <p>© 2025 Одинокие сердца некста. Все права защищены (или нет).</p>
+            <p>Редакция не несет ответственности за нервные срывы героев статей.</p>
+        </footer>
+    </div>
+
+</body>
+</html>
